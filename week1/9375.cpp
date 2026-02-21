@@ -3,32 +3,32 @@
 경우의 수는 곱하기
 */
 
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 
-int test_case;
+// int test_case;
 
-int main(void) {
-	cin >> test_case;
-	for (int i = 0; i < test_case; i++) {
-		int n;
-		cin >> n;
-		unordered_map<string, int> inputs;
-		for (int j = 0; j < n; j++) {
-			string name, type;
-			cin >> name >> type;
-			inputs[type]++;
-		}
-		int sum = 1;
-		for (auto val : inputs) {
-			sum *= (val.second + 1);
-		}
-		sum--;
-		cout << sum << '\n';
-		inputs.clear();
-	}
-	return 0;
-}
+// int main(void) {
+// 	cin >> test_case;
+// 	for (int i = 0; i < test_case; i++) {
+// 		int n;
+// 		cin >> n;
+// 		unordered_map<string, int> inputs;
+// 		for (int j = 0; j < n; j++) {
+// 			string name, type;
+// 			cin >> name >> type;
+// 			inputs[type]++;
+// 		}
+// 		int sum = 1;
+// 		for (auto val : inputs) {
+// 			sum *= (val.second + 1);
+// 		}
+// 		sum--;
+// 		cout << sum << '\n';
+// 		inputs.clear();
+// 	}
+// 	return 0;
+// }
 
 // int t, n;
 // string a, b;
@@ -49,3 +49,28 @@ int main(void) {
 // 		cout << ret << endl;
 // 	}
 // }
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int c, n;
+unordered_map<string, int> _map;
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(0), cout.tie(0);
+
+	cin >> c;
+	while (c--) {
+		cin >> n;
+		while (n--) {
+			string name, type;
+			cin >> name >> type;
+			_map[type]++;
+		}
+		int sum = 1;
+		for (auto i : _map) {
+			sum *= (i.second + 1);
+		}
+		_map.clear();
+	}
+}
