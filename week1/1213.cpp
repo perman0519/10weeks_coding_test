@@ -2,8 +2,8 @@
 1213: 팰린드롬 만들기 못품
 */
 
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 
 // string input;
 // char a[51];
@@ -66,37 +66,76 @@ using namespace std;
 // }
 
 
-string s, ret;
-int cnt[200], flag;
-char mid;
+// string s, ret;
+// int cnt[200], flag;
+// char mid;
+
+// int main() {
+// 	ios_base::sync_with_stdio(false);
+// 	cin.tie(0), cout.tie(0);
+
+// 	cin >> s;
+// 	for (char c : s) {
+// 		cnt[(int)c]++;
+// 	}
+// 	for (int i = 'Z'; i >= 'A'; i--) {
+// 		if (cnt[i]) {
+// 			if (cnt[i] & 1) { // 홀수
+// 				flag++;
+// 				mid = (char)i;
+// 				cnt[i]--;
+// 			}
+// 			if (flag == 2)
+// 				break;
+// 			for (int j = 0; j < cnt[i]; j += 2) {
+// 				ret = (char)i + ret;
+// 				ret += (char)i;
+// 			}
+// 		}
+// 	}
+// 	if (mid)
+// 		ret.insert(ret.begin() + ret.size() / 2, mid);
+// 	if (flag == 2)
+// 		cout << "I'm Sorry Hansoo";
+// 	else
+// 		cout << ret;
+// }
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+string name;
+char arr[256];
+int flag;
+char middle;
+string ret;
 
 int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(0), cout.tie(0);
+	cin >> name;
 
-	cin >> s;
-	for (char c : s) {
-		cnt[(int)c]++;
+	for (char c : name) {
+		arr[(int)c]++;
 	}
 	for (int i = 'Z'; i >= 'A'; i--) {
-		if (cnt[i]) {
-			if (cnt[i] & 1) { // 홀수
+		while (arr[i]) {
+			if (arr[i] % 2) {
 				flag++;
-				mid = (char)i;
-				cnt[i]--;
+				if (flag == 2) {
+					cout << "I'm Sorry Hansoo";
+					exit(0);
+				}
+				middle = (char)i;
+				arr[i]--;
 			}
-			if (flag == 2)
-				break;
-			for (int j = 0; j < cnt[i]; j += 2) {
+			else {
 				ret = (char)i + ret;
 				ret += (char)i;
+				arr[i] -= 2;
 			}
 		}
 	}
-	if (mid)
-		ret.insert(ret.begin() + ret.size() / 2, mid);
-	if (flag == 2)
-		cout << "I'm Sorry Hansoo";
-	else
-		cout << ret;
+	if (middle)
+		ret.insert(ret.size() / 2, 1, middle);
+	cout << ret;
 }
