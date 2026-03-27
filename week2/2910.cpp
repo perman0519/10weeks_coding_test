@@ -12,7 +12,7 @@ int main(void) {
 	for (int i = 0; i < n; i++) {
 		cin >> vec[i];
 		freq[vec[i]]++;
-		if (order.find(vec[i]) == order.end()) {
+		if (order[vec[i]] == 0) {
 			order[vec[i]] = i;
 		}
 	}
